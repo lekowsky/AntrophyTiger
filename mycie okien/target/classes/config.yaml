@@ -1,0 +1,54 @@
+# Konfiguracja pluginu WindowCleaning dla SkyRise
+
+# Lokalizacje (wypełniane komendami)
+boss-location: ""
+elevator-location: ""
+platform-location: ""
+
+# Ustawienia zarobków i XP
+base-earnings: 50.0
+base-xp: 100
+earnings-per-level: 0.1  # 10% więcej za każdy poziom
+
+# Przedmioty pracy
+brush:
+  name: "&aSzczotka do okien"
+  model-data: 1001
+bucket:
+  name: "&bWiaderko z płynem"
+  model-data: 1002
+
+# Poziomy (maksymalny poziom = 5)
+max-level: 5
+xp-per-level:
+  1: 100
+  2: 300
+  3: 600
+  4: 1000
+  5: 1500
+
+# Umiejętności
+skills:
+  faster_scrubbing:
+    name: "Szybsze szorowanie"
+    max-level: 5
+    cost-per-level:
+      1: 1
+      2: 2
+      3: 3
+      4: 4
+      5: 5
+  better_rates:
+    name: "Lepsze stawki"
+    max-level: 3
+    cost-per-level:
+      1: 2
+      2: 4
+      3: 6
+  lucky_cleaner:
+    name: "Szczęśliwy Traf"
+    max-level: 3
+    cost-per-level:
+      1: 2
+      2: 3
+      3: 4

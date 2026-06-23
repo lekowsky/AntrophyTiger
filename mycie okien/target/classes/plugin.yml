@@ -1,0 +1,26 @@
+name: WindowCleaning
+version: 1.11
+main: pl.skyrise.windowcleaning.WindowCleaningPlugin
+api-version: '1.21'
+depend: [Citizens, Vault]
+softdepend: [PlaceholderAPI]
+author: SkyRise
+description: Praca mycia okien na wieżowcu.
+
+commands:
+  windowcleaning:
+    description: Komendy administracyjne pluginu.
+    usage: /windowcleaning <reload|setboss|setelevatorup|setelevatordown|setplatform|wand|setregion|reset|forceend|resetall|setlevel|setxp|setskillpoints|addskillpoints|setskill>
+    permission: windowcleaning.admin
+    aliases: [mycieokien]
+
+permissions:
+  windowcleaning.*:
+    default: op
+    children:
+      windowcleaning.admin: true
+      windowcleaning.use: true
+  windowcleaning.admin:
+    default: op
+  windowcleaning.use:
+    default: true
