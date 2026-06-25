@@ -1,0 +1,57 @@
+# ══════════════════════════════════════
+# SkyRiseJobs — globalne boosty prac
+# Runtime: plugins/SkyRiseJobs/config/boosts/config.yml
+# Dane:    plugins/SkyRiseJobs/config/boosts/data.yml
+# Dostęp do zakupu ustawiasz permisją, np. dla rangi elity.
+# ══════════════════════════════════════
+
+enabled: true
+
+# Osobny prefix systemu boostów.
+prefix: "<#36d1ff><bold>BOOST</bold> <gray>» <white>"
+
+# Dostępne placeholdery w wiadomościach i bossbarze:
+# {prefix}, {cost}, {currency}, {player}, {duration}, {time}, {money_multiplier}, {exp_multiplier}
+
+# Permisja dla rangi premium/elity, która może kupować globalny boost.
+permission: "skyrisejobs.boost.elite"
+admin-permission: "skyrisejobs.boost.admin"
+
+# Koszt zakupu przez Vault.
+cost: 10000.0
+currency-symbol: "$"
+
+# Czas działania i cooldown zakupu.
+duration-minutes: 60
+cooldown-minutes: 720
+
+# Czy można kupić kolejny boost, gdy globalny boost jest nadal aktywny.
+allow-purchase-while-active: false
+
+# Mnożniki, które przyszłe moduły prac powinny aplikować przez BoostManager.
+money-multiplier: 1.5
+exp-multiplier: 1.5
+
+bossbar:
+  enabled: true
+  # BossBar używa legacy kolorów (&), nie MiniMessage.
+  title: "&b&lBOOST PRAC &7» &f{time} &7| &fZarobki x{money_multiplier} EXP x{exp_multiplier}"
+  color: "BLUE"
+  style: "SOLID"
+
+messages:
+  no-permission: "{prefix}<red>Ten boost jest dostępny tylko dla rangi <dark_red>Premium/Elita</dark_red>.</red>"
+  admin-no-permission: "{prefix}<red>Brak uprawnień administracyjnych do boostów.</red>"
+  disabled: "{prefix}<red>System boostów jest obecnie wyłączony.</red>"
+  only-player: "{prefix}<red>Tylko gracz może kupić boost.</red>"
+  no-economy: "{prefix}<red>Ekonomia Vault nie jest dostępna.</red>"
+  no-money: "{prefix}<red>Nie stać Cię na globalny boost. Wymagane: <dark_red>{cost}{currency}</dark_red>.</red>"
+  cooldown: "{prefix}<red>Musisz odczekać jeszcze <dark_red>{time}</dark_red> przed kolejnym zakupem boosta.</red>"
+  already-active: "{prefix}<red>Globalny boost jest już aktywny. Pozostało: <dark_red>{time}</dark_red>.</red>"
+  purchased: "{prefix}<white>Kupiłeś globalny boost prac za <#36d1ff>{cost}{currency}</#36d1ff>.</white>"
+  broadcast: "{prefix}<white>Globalny boost do prac został aktywowany przez <#36d1ff>{player}</#36d1ff><white> na <#36d1ff>{duration}</#36d1ff><white>! Zarobki: <#36d1ff>x{money_multiplier}</#36d1ff><white>, EXP: <#36d1ff>x{exp_multiplier}</#36d1ff><white>."
+  status-active: "{prefix}<white>Globalny boost jest aktywny. Pozostało: <#36d1ff>{time}</#36d1ff><white>. Zarobki: <#36d1ff>x{money_multiplier}</#36d1ff><white>, EXP: <#36d1ff>x{exp_multiplier}</#36d1ff><white>."
+  status-inactive: "{prefix}<white>Globalny boost nie jest aktywny. Koszt: <#36d1ff>{cost}{currency}</#36d1ff><white>, czas: <#36d1ff>{duration}</#36d1ff><white>."
+  reloaded: "{prefix}<white>Przeładowano system boostów.</white>"
+  forced-start: "{prefix}<white>Wymuszono start globalnego boosta.</white>"
+  forced-stop: "{prefix}<white>Wyłączono globalny boost.</white>"

@@ -1,0 +1,34 @@
+# ══════════════════════════════════════
+# SkyRiseJobs — główny config
+# Runtime: plugins/SkyRiseJobs/config/main/config.yml
+# Moduły/prace:
+# - wszystko danego modułu: plugins/SkyRiseJobs/config/<moduł>/
+# - np. config/main/config.yml, config/levels/config.yml, config/windowcleaning/data.db
+# Kolory główne:
+# - prefix: #e36c1e PRACA
+# - tekst: biały
+# - błędy/ostrzeżenia: czerwony
+# - wyróżnienia: #36d1ff
+# ══════════════════════════════════════
+
+prefix: "<#e36c1e><bold>PRACA</bold> <gray>» <white>"
+highlight-color: "<#36d1ff>"
+
+# Placeholdery dostępne w głównych wiadomościach:
+# {prefix}
+messages:
+  no-permission: "{prefix}<red>Brak uprawnień.</red>"
+  only-player: "{prefix}<red>Tylko gracz może użyć tej komendy.</red>"
+  module-disabled: "{prefix}<red>Ta komenda jest obecnie wyłączona <gray>(moduł: <#36d1ff>{module}</#36d1ff>)</gray>.</red>"
+  reload: "{prefix}<white>Przeładowano konfigurację i moduły.</white>"
+  no-jobs: "{prefix}<red>Brak dostępnych prac.</red>"
+  job-unavailable: "{prefix}<red>Ta praca jest dla Ciebie niedostępna.</red>"
+
+gui:
+  jobs-title: "<#e36c1e><bold>PRACE</bold>"
+  jobs-size: 54
+  # GUI administracyjne /jobs ma być puste — bez szyb/fillera.
+  filler:
+    enabled: false
+    material: "BLACK_STAINED_GLASS_PANE"
+    name: " "
