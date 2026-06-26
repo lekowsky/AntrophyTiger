@@ -1,0 +1,149 @@
+# ============================================================
+# SkyRiseJobs — praca WindowCleaning (Mycie Okien)
+# Runtime: plugins/SkyRiseJobs/config/windowcleaning/config.yml
+# Dane:    plugins/SkyRiseJobs/data.db  (jedna wspólna baza wszystkich prac)
+#
+# Kolory tekstów w tym pliku: legacy & oraz §.
+# Wiadomości chat z kodu pracy dostają automatycznie globalny prefix PRACA.
+# Actionbary pozostają bez prefixu.
+#
+# Przydatne placeholdery globalne w przyszłych tekstach modułu:
+# {level}, {level_progress}, {exp}, {exp_required}, {exp_percent}
+# Boosty pracy są naliczane automatycznie przez SkyRiseJobs.
+# ============================================================
+
+# ---------- SKYRISEJOBS / MENU ----------
+job-display-name: "Mycie Okien"
+# Kolor ikony pracy w /jobs. Ciemnoniebieski pasuje do pracy Mycie Okien.
+job-menu-color: "&1"
+job-description:
+  - "&7Myj okna na wieżowcu i odbieraj wypłatę."
+  - "&7Wymaga ustawienia NPC oraz regionu okien."
+
+# ---------- LOKALIZACJE NPC I PLATFORM ----------
+# Ustawiane komendami /mycie setboss, /mycie setelevatorup itp.
+# Nie edytuj ręcznie – użyj komend w grze!
+
+boss-location: ""
+elevator-up-location: ""
+elevator-down-location: ""
+platform-location: ""
+platform2-location: ""         # Miejsce, do którego wraca gracz po pracy (opcjonalne; domyślnie przed operatorem na dole)
+
+# ---------- ZAROBKI I DOŚWIADCZENIE ----------
+base-earnings: 50.0             # Podstawowa wypłata za ukończoną pracę
+base-xp: 100                    # PD (doświadczenie) za jedną pracę
+earnings-per-level: 0.1         # O ile procent więcej dostaje gracz za każdy poziom (0.1 = 10%)
+
+# ---------- PRZEDMIOTY PRACY ----------
+brush:
+  name: "&aSzczotka do okien"   # Wyświetlana nazwa przedmiotu
+  model-data: 1001              # Niestandardowy wygląd (Resource Pack)
+bucket:
+  name: "&bWiaderko z płynem"   # Wyświetlana nazwa przedmiotu
+  model-data: 1002              # Niestandardowy wygląd (Resource Pack)
+
+# ---------- POZIOMY GRACZA ----------
+max-level: 5                    # Maksymalny poziom pracy
+xp-per-level:                   # Ile PD potrzeba na każdy poziom
+  1: 100
+  2: 300
+  3: 600
+  4: 1000
+  5: 1500
+
+skill-point-drop-chance: 0.3    # Szansa (0.3 = 30%), że po zakończeniu pracy gracz dostanie punkt umiejętności
+
+# ---------- UMIEJĘTNOŚCI ----------
+skills:
+  szybsze_szorowanie:
+    name: "Szybsze szorowanie"
+    max-level: 3
+    cost-per-level:             # Koszt w punktach za każdy poziom
+      1: 1
+      2: 2
+      3: 3
+    power-per-level: 1          # Dodatkowy postęp mycia na każdy poziom umiejętności (im więcej, tym szybsze mycie)
+    pointer-speed-reduction-per-level: 1  # O ile przyspiesza wskaźnik (utrudnienie) na każdy poziom (im szybciej, tym trudniej trafić)
+    required-player-level: 0    # Poziom gracza wymagany do odblokowania
+
+  wytrzymalosc:
+    name: "Wytrzymałość"
+    max-level: 3
+    cost-per-level:
+      1: 2
+      2: 3
+      3: 4
+    penalty-reduction-per-level: 5   # O ile punktów mniejsza kara przy pomyłce na każdy poziom
+    required-player-level: 2
+
+  wieksza_strefa:
+    name: "Większa strefa"
+    max-level: 2
+    cost-per-level:
+      1: 3
+      2: 5
+    zone-expand-per-level: 1         # O ile slotów poszerza się zielona strefa (na każdą stronę)
+    required-player-level: 3
+
+  czysta_robota:
+    name: "Czysta robota"
+    max-level: 2
+    cost-per-level:
+      1: 3
+      2: 5
+    bonus-per-level: 8               # Premia w $ za każde perfekcyjne okno (na każdy poziom umiejętności)
+    required-player-level: 4
+
+  darmowe_namaczanie:
+    name: "Darmowe namaczanie"
+    max-level: 2
+    cost-per-level:
+      1: 3
+      2: 5
+    chance-per-level: 15             # Szansa (w %) na zachowanie namoczenia po umyciu okna (na każdy poziom)
+    required-player-level: 4
+
+  bonus_za_komplet:
+    name: "Bonus za komplet"
+    max-level: 2
+    cost-per-level:
+      1: 4
+      2: 6
+    multiplier-per-level: 0.2        # Dodatkowy mnożnik wypłaty (np. 0.2 = +20%) gdy wszystkie okna były perfekcyjne
+    required-player-level: 5
+
+# ---------- ZLECENIE ----------
+job:
+  total-windows-to-clean: 5             # Ile okien trzeba umyć w jednej pracy
+  window-block-types:                   # Które bloki są uznawane za "okna"
+    - GLASS
+    - GLASS_PANE
+    - WHITE_STAINED_GLASS
+    - WHITE_STAINED_GLASS_PANE
+    - LIGHT_BLUE_STAINED_GLASS
+    - LIGHT_BLUE_STAINED_GLASS_PANE
+  base-scrub-power: 10                  # Bazowy postęp mycia na jedno udane kliknięcie
+  minigame-gui-size: 27                 # Rozmiar okna minigry (musi być wielokrotnością 9)
+
+# ---------- CZĄSTECZKI (PARTICLE) ----------
+particles:
+  enabled: true
+  interval: 10          # Co ile ticków odświeżać (20 ticków = 1 sekunda)
+  color: "158,158,158"  # Kolor RGB (szary)
+  scale: 1.2            # Rozmiar cząsteczki
+  count: 3              # Ilość cząsteczek na jedno okno
+  offset-x: 0.0         # Przesunięcie w osi X (lewo/prawo)
+  offset-y: 0.6         # Przesunięcie w górę (wysokość)
+  offset-z: 0.8         # Przesunięcie w przód (odległość od szyby)
+
+# ---------- MINIGRA ----------
+minigame:
+  pointer-base-speed: 6               # Prędkość wskaźnika (im mniej, tym szybciej)
+  pointer-speed-reduction-per-level: 1  # O ile zwalnia wskaźnik przy ulepszeniu "Szybsze szorowanie"
+  scrub-fail-penalty: 15              # O ile spada postęp przy chybieniu
+
+# ---------- REGION (NIE EDYTUJ RĘCZNIE!) ----------
+region:
+  pos1: ""
+  pos2: ""

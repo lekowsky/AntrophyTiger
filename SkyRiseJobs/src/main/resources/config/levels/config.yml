@@ -1,0 +1,56 @@
+# ══════════════════════════════════════
+# SkyRiseJobs — poziom postaci
+# Runtime: plugins/SkyRiseJobs/config/levels/config.yml
+# Dane:    plugins/SkyRiseJobs/config/levels/data.yml
+# ══════════════════════════════════════
+
+enabled: true
+
+# Osobny prefix systemu poziomu postaci.
+prefix: "<#8be936><bold>POZIOM</bold> <gray>» <white>"
+
+# Placeholdery w wiadomościach tego pliku:
+# {prefix}, {player}, {level}, {character_level}, {exp}, {character_exp},
+# {exp_required}, {character_exp_required}, {exp_percent}, {character_exp_percent},
+# {level_progress}, {character_level_progress}, {required_level}
+# PlaceholderAPI, jeśli jest zainstalowane:
+# %skyrisejobs_level%, %skyrisejobs_exp%, %skyrisejobs_exp_required%,
+# %skyrisejobs_exp_percent%, %skyrisejobs_level_progress%,
+# %skyrisejobs_boost_money%, %skyrisejobs_boost_exp%
+
+# Każdy gracz startuje z tym poziomem.
+start-level: 1
+max-level: 100
+
+# Wymagany exp do następnego poziomu, jeśli poziom nie jest nadpisany w sekcji levels.
+formula:
+  base-exp: 100.0
+  multiplier: 1.25
+
+# Ręczne nadpisanie progów. Wartość oznacza exp wymagany Z TEGO poziomu do następnego.
+levels:
+  1: 100.0
+  2: 150.0
+  3: 225.0
+  4: 325.0
+  5: 500.0
+
+# Poziomy wymagane dla konkretnych prac.
+# Domyślnie każda nieopisana praca wymaga poziomu 1.
+job-requirements:
+  default: 1
+  jobs:
+    example_first_job: 1
+    example_second_job: 2
+    windowcleaning: 1
+
+messages:
+  status: "{prefix}<white>Poziom postaci: <#36d1ff>{level_progress}</#36d1ff><white>. Exp: <#36d1ff>{exp}</#36d1ff><gray>/</gray><#36d1ff>{exp_required}</#36d1ff>."
+  status-other: "{prefix}<white>Poziom gracza <#36d1ff>{player}</#36d1ff><white>: <#36d1ff>{level_progress}</#36d1ff><white>."
+  level-up: "{prefix}<white>Awansowałeś/aś na poziom postaci <#36d1ff>{level}</#36d1ff><white>!"
+  exp-added: "{prefix}<white>Otrzymano <#36d1ff>{exp}</#36d1ff><white> exp postaci."
+  job-locked: "{prefix}<red>Ta praca wymaga poziomu postaci <dark_red>{required_level}</dark_red>. Twój poziom: <dark_red>{level}</dark_red>.</red>"
+  admin-set: "{prefix}<white>Ustawiono poziom gracza <#36d1ff>{player}</#36d1ff><white> na <#36d1ff>{level}</#36d1ff><white>."
+  admin-addexp: "{prefix}<white>Dodano <#36d1ff>{exp}</#36d1ff><white> exp postaci graczowi <#36d1ff>{player}</#36d1ff><white>."
+  no-permission: "{prefix}<red>Brak uprawnień.</red>"
+  only-player: "{prefix}<red>Tylko gracz może sprawdzić swój poziom.</red>"
